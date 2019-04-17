@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  api:
+    build: .
+    # image: node:latest
+
+  relay:
+    build:
+      context: .
+      dockerfile: Dockerfile.relay
+    environment:
+      RELAY_HOST: api
+      RELAY_PORT: 8000
+    ports:
+      - "8001:8001"
